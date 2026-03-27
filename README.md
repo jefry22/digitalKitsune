@@ -64,9 +64,7 @@ git push
 En servidor:
 
 ```bash
-git pull
-npm install
-npm run build
+npm run deploy:server
 ```
 
 ## Scripts
@@ -75,3 +73,33 @@ npm run build
 - `npm run build`: compilacion de produccion
 - `npm run start`: ejecutar build
 - `npm run lint`: revisar estilo/codigo
+
+## Modulo actual: Login con roles
+
+Se implemento un primer modulo de autenticacion con rutas protegidas por rol.
+
+- Login: `/login`
+- Dashboard: `/dashboard`
+- Vistas protegidas: `/admin`, `/pm`, `/developer`
+
+API del modulo de autenticacion:
+
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+- `GET /api/auth/session`
+
+Credenciales demo:
+
+- Admin: `admin@digitalkitsune.com` / `Admin123!`
+- PM: `pm@digitalkitsune.com` / `Pm123456!`
+- Developer: `dev@digitalkitsune.com` / `Dev123456!`
+
+## Variables de entorno
+
+Crea un archivo `.env.local` en local (y `.env` en servidor) con:
+
+```env
+AUTH_SECRET=coloca_aqui_un_secreto_largo_y_unico
+```
+
+Si no defines `AUTH_SECRET`, el sistema usa un valor por defecto solo para desarrollo.
